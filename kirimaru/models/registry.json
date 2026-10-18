@@ -1,0 +1,35 @@
+﻿{
+  "default_role": "refiner",
+  "roles": {
+    "scorer": "cheap_text",
+    "refiner": "strong_text",
+    "multimodal": "video_audio",
+    "router": "auto"
+  },
+  "models": {
+    "cheap_text": {
+      "id": "google/gemini-2.5-flash-lite",
+      "modalities": ["text"],
+      "max_input_tokens": 1000000,
+      "notes": "Cheapest bulk scoring of transcript chunks."
+    },
+    "strong_text": {
+      "id": "anthropic/claude-sonnet-4.5",
+      "modalities": ["text"],
+      "max_input_tokens": 200000,
+      "notes": "Final ranking and hook/title writing."
+    },
+    "video_audio": {
+      "id": "google/gemini-2.5-flash",
+      "modalities": ["text", "image", "audio", "video"],
+      "max_input_tokens": 1000000,
+      "notes": "Multimodal: can analyze raw audio/video for visual moments."
+    },
+    "auto": {
+      "id": "openrouter/auto",
+      "modalities": ["text", "image"],
+      "max_input_tokens": 200000,
+      "notes": "OpenRouter auto-router picks a model per request."
+    }
+  }
+}
